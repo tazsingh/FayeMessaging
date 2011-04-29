@@ -19,3 +19,20 @@ div#container {
   width: 960px;
   margin: 0 auto;
 }
+
+div.message {
+  margin: 0 10px 15px;
+}
+
+div.message .text {
+
+}
+
+div.message .timestamp {
+  color: #999;
+  float: right;
+}
+
+div.message .username {
+  color: #999;
+}
