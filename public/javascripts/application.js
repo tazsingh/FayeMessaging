@@ -4,6 +4,11 @@
 $(function() {
   var faye = new Faye.Client('http://localhost:9292/faye');
   faye.subscribe('/messages/new', function (data) {
-    alert(data);
+    $('#chat_box').append($('</div>').text(data));
   });
+  
+  $('#message_submit').click(function(e) {
+    client.publish('/messages/new', {text: $('#message_text')});
+  });
+  
 });
