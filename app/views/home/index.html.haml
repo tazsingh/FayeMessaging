@@ -1,2 +1,6 @@
-%h1 Home#index
-%p Find me in app/views/home/index.html.haml
+%h1 Group Chat
+
+%div.chat_box
+= form_for :message do |f|
+  = f.text_field :text
+  = f.submit "Send"
