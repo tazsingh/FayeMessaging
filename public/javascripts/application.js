@@ -57,6 +57,7 @@ $(function() {
       current_position--;
     
       if(current_position < 0) {
+        $('#message_text').val(current_value);
         current_position = 0;
       }
     }
