@@ -4,11 +4,13 @@
 $(function() {
   var faye = new Faye.Client('http://192.168.1.149:9292/faye');
   faye.subscribe('/messages/new', function (data) {
-    $('#chat_box').append($('</div>').text(data));
+    $('#chat_box').append($("<p>" + data "</p>"));
   });
   
   $('#message_submit').click(function(e) {
+    e.preventDefault();
     client.publish('/messages/new', {text: $('#message_text')});
+    return false;
   });
   
 }); 
