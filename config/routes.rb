@@ -1,5 +1,8 @@
 FayeMessaging::Application.routes.draw do
   root :to => "home#index"
+  get "sessions/new"
+  
+  match "/auth/:provider/callback" => "sessions#create"  
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

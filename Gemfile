@@ -11,6 +11,7 @@ gem 'faye'
 gem 'haml'
 gem 'haml-rails'
 gem 'jquery-rails'
+gem 'omniauth'
 
 # Use unicorn as the web server
 # gem 'unicorn'
