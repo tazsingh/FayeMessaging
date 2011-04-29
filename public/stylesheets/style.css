@@ -7,3 +7,15 @@ body, p, ol, ul, td, input, select, label {
   font-size:   13px;
   line-height: 18px;
 }
+
+div#chat_box {
+  height: 500px;
+  width: 800px;
+  border: 1px solid #222;
+  overflow-y: scroll;
+}
+
+div#container {
+  width: 960px;
+  margin: 0 auto;
+}
