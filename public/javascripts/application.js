@@ -22,7 +22,7 @@ $(function() {
     
     faye.publish('/messages/new', {
       username: $('#message_username').val(),
-      timestamp: formatTime((new Date()).getTime()),
+      timestamp: formatTime(),
       text: $('#message_text').val()
     });
     $('#message_text').val("");
@@ -64,8 +64,8 @@ $(function() {
   
   
   
-  var formatTime = function(unixTimestamp) { 
-    var dt = new Date(unixTimestamp * 1000); 
+  var formatTime = function() { 
+    var dt = new Date(); 
     var hours = dt.getHours(); 
     var minutes = dt.getMinutes(); 
     var seconds = dt.getSeconds(); 
