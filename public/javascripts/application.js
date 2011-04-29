@@ -43,6 +43,6 @@ $(function() {
         $('#message_text').val(history_value);
       }
     }
-  }
+  });
   
 }); 
