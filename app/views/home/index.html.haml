@@ -1,6 +1,7 @@
 %h1 Group Chat
 
-%div.chat_box
+%div#chat_box
+
 = form_for :message do |f|
   = f.text_field :text
   = f.submit "Send"
