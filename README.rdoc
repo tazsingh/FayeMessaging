@@ -1,4 +1,4 @@
-== Faye Messaging
+= Faye Messaging
 
 A simple Group Chat application written during the April 28th Toronto Ruby Hack Night.
 
