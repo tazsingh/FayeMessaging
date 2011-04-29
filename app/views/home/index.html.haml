@@ -8,6 +8,11 @@
 %div#chat_box
 
 = form_for :message do |f|
-  = f.hidden_field :username, :value => current_user
+  - if current_user?
+    = f.hidden_field :username, :value => current_user
+  - else
+    = f.label :username
+    = f.text_field :username
+    %br
   = f.text_field :text, :size => 60
   = f.submit "Send"
