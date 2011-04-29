@@ -22,7 +22,7 @@ $(function() {
     
     faye.publish('/messages/new', {
       username: $('#message_username').val(),
-      timestamp: (new Date()).getTime(),
+      timestamp: formatTime((new Date()).getTime()),
       text: $('#message_text').val()
     });
     $('#message_text').val("");
@@ -36,13 +36,45 @@ $(function() {
         current_value = $('#message_text').val();
       }
     
-      current_position++;
-    
       var history_value = chat_history[current_position];
       if(history_value) {
         $('#message_text').val(history_value);
       }
+    
+      current_position++;
+      
+      if(current_position >= chat_history.length) {
+        current_position = chat_history.length - 1;
+      }
+    }
+
+    if(e.keyCode == 40) { // down arrow goes down in history    
+      var history_value = chat_history[current_position];
+      if(history_value) {
+        $('#message_text').val(history_value);
+      }
+      
+      current_position--;
+    
+      if(current_position < 0) {
+        current_position = 0;
+      }
     }
   });
+  
+  
+  
+  var formatTime = function(unixTimestamp) { 
+    var dt = new Date(unixTimestamp * 1000); 
+    var hours = dt.getHours(); 
+    var minutes = dt.getMinutes(); 
+    var seconds = dt.getSeconds(); 
+    // the above dt.get...() functions return a single digit 
+    // so I prepend the zero here when needed 
+    if (hours < 10) hours = '0' + hours; 
+    if (minutes < 10) minutes = '0' + minutes; 
+    if (seconds < 10) seconds = '0' + seconds; 
+    return hours + ":" + minutes + ":" + seconds; 
+  } 
   
 }); 
