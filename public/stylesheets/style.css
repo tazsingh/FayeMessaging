@@ -1,0 +1,9 @@
+html, body { margin: 0; padding: 0; }
+
+body { background-color: #fff; color: #222; }
+
+body, p, ol, ul, td, input, select, label {
+  font-family: Helvetica Neue, Helvetica, Verdana, Arial, sans-serif;
+  font-size:   13px;
+  line-height: 18px;
+}
