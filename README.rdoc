@@ -14,7 +14,7 @@ Execute this line from the app's root directory to run Faye:
 
   rackup faye.ru -s thin -E production
 
-In order to run on anything but +localhost+, change the IP on +line 10+ at +public/javascripts/application.js+ and +line 6+ at +app/views/layouts/application.html.erb+.
+In order to run on anything but +localhost+, change the IP on <tt>line 10</tt> at <tt>public/javascripts/application.js</tt> and <tt>line 6</tt> at <tt>app/views/layouts/application.html.erb</tt>.
 
 == Notes on Implementation
 
