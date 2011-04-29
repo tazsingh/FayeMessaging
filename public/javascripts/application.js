@@ -11,4 +11,4 @@ $(function() {
     client.publish('/messages/new', {text: $('#message_text')});
   });
   
-});
+}); 
