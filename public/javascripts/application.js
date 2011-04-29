@@ -2,8 +2,17 @@
 // This file is automatically included by javascript_include_tag :defaults
 
 $(function() {
-  var faye = new Faye.Client('http://localhost:9292/faye');
+  var faye = new Faye.Client('http://192.168.1.149:9292/faye');
   faye.subscribe('/messages/new', function (data) {
-    alert(data);
+    $('#chat_box').append($("<p>" + data.text + "</p>"));
+    $('#chat_box').scrollTop(1000000);
   });
-});
+  
+  $('#message_submit').click(function(e) {
+    e.preventDefault();
+    faye.publish('/messages/new', {text: $('#message_text').val()});
+    $('#message_text').val("");
+    return false;
+  });
+  
+}); 

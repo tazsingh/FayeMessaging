@@ -1,4 +1,13 @@
-%h1 Home#index
-%p Find me in app/views/home/index.html.haml
+%h1 Group Chat
+
 - if current_user?
-  = current_user
+  = "Logged in as #{current_user}"
+
+%div#chat_box
+
+= form_for :message do |f|
+  = f.label :username
+  = f.text_field :username, :size => 40
+  %br
+  = f.text_field :text, :size => 60
+  = f.submit "Send"
