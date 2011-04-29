@@ -9,7 +9,7 @@ $(function() {
   
   $('#message_submit').click(function(e) {
     e.preventDefault();
-    client.publish('/messages/new', {text: $('#message_text')});
+    faye.publish('/messages/new', {text: $('#message_text')});
     return false;
   });
   
