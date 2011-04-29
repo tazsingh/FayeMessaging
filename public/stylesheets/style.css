@@ -14,3 +14,8 @@ div#chat_box {
   border: 1px solid #222;
   overflow-y: scroll;
 }
+
+div#container {
+  width: 960px;
+  margin: 0 auto;
+}
