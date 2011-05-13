@@ -1,18 +1,20 @@
 %h1 Group Chat
 
-- if current_user?
-  = "Logged in as #{current_user}"
-- else
-  = link_to "Sign in with Twitter", "/auth/twitter"
+.user
+  - if current_user?
+    = "Logged in as #{current_user}"
+  - else
+    = link_to "Sign in with Twitter", "/auth/twitter"
 
 %div#chat_box
 
-= form_for :message do |f|
-  - if current_user?
-    = f.hidden_field :username, :value => current_user
-  - else
-    = f.label :username
-    = f.text_field :username
-    %br
-  = f.text_field :text, :size => 60
-  = f.submit "Send"
+#chat_form
+  = form_for :message do |f|
+    - if current_user?
+      = f.hidden_field :username, :value => current_user
+    - else
+      = f.label :username
+      = f.text_field :username
+      %br
+    = f.text_field :text, :size => 60
+    = f.submit "Send"
