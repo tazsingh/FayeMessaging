@@ -8,7 +8,8 @@ $(function() {
   var current_position = 0;
   
   var faye = new Faye.Client('http://192.168.1.149:9292/faye');
-  faye.subscribe('/messages/new', function (data) {
+
+  faye.subscribe('/messages/clean', function (data) {
     $('#chat_box').append($('<div class="message"><div class="timestamp">' + data.timestamp + '</div><div class="username">' + data.username + '</div><div class="text">' + data.text + '</div></div>'));
     $('#chat_box').scrollTop(1000000);
   });
@@ -20,11 +21,20 @@ $(function() {
     current_value = '';
     current_position = 0;
     
-    faye.publish('/messages/new', {
-      username: $('#message_username').val(),
-      timestamp: formatTime(),
-      text: $('#message_text').val()
-    });
+    if($('#message_text').val().indexOf('/') === 0) {
+      faye.publish('/interceptor/new', {
+        username: $('#message_username').val(),
+        timestamp: formatTime(),
+        text: $('#message_text').val()
+      });
+    } else {    
+      faye.publish('/messages/dirty', {
+        username: $('#message_username').val(),
+        timestamp: formatTime(),
+        text: $('#message_text').val()
+      });
+    }
+
     $('#message_text').val("");
     return false;
   });
@@ -40,7 +50,7 @@ $(function() {
       if(history_value) {
         $('#message_text').val(history_value);
       }
-    
+      
       current_position++;
       
       if(current_position >= chat_history.length) {

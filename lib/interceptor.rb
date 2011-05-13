@@ -1,14 +1,11 @@
 module Rack
   class Interceptor
-    def initialize(app)
-      @app = app
-    end
     def call(env)
       @req = Rack::Request.new(env)
       
       # EventMachine used here for subscription to faye
       
-      @app.call(env)
+      [200, {'Content-type' => 'text'}, "Hello World!"]
     end
   end
 end
