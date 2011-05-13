@@ -1,0 +1,34 @@
+= Faye Messaging
+
+A simple Group Chat application written during the April 28th Toronto Ruby Hack Night.
+
+The goal was to create a real time web application using Rails and Faye.
+
+Feel free to browse the source and commit history to get a feel for how it works so you can use it in your own app.
+
+We all learnt a lot by developing this app and it was a very successful Hack Night!
+
+== Setup
+
+Execute this line from the app's root directory to run Faye:
+
+  rackup faye.ru -s thin -E production
+
+In order to run on anything but +localhost+, change the IP on <tt>line 10</tt> at <tt>public/javascripts/application.js</tt> and <tt>line 6</tt> at <tt>app/views/layouts/application.html.erb</tt>.
+
+== Notes on Implementation
+
+Click on the "Sign in with Twitter" link to set your Username to your Twitter Username.
+You can also enter your Username in the Text Field if you haven't signed in with Twitter.
+
+Pressing the "Up" and "Down" arrow keys on the keyboard when the Message Text Box is in focus will traverse through your history of sent messages (like your Terminal).
+
+== Contributors
+
+* Tasveer Singh (@tazsingh)
+* Dann Toliver (@dann)
+* Aaron McLeod (@agmcleod)
+* Alex Chesser (@fstrnet)
+* Nick Hoffman (@nphoffman)
+
+Feel free to extend this app and send me pull requests!
