@@ -7,7 +7,7 @@ $(function() {
   var current_value = '';
   var current_position = 0;
   
-  var faye = new Faye.Client('http://localhost:9292/faye');
+  var faye = new Faye.Client('http://192.168.1.149:9292/faye');
 
   faye.subscribe('/messages/clean', function (data) {
     $('#chat_box').append($('<div class="message"><div class="timestamp">' + data.timestamp + '</div><div class="username">' + data.username + '</div><div class="text">' + data.text + '</div></div>'));
