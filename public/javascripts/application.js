@@ -21,13 +21,35 @@ $(function() {
     current_value = '';
     current_position = 0;
     
+    // intercept all messages that start with '/'
     if($('#message_text').val().indexOf('/') === 0) {
-      faye.publish('/interceptor/new', {
-        username: $('#message_username').val(),
-        timestamp: formatTime(),
-        text: $('#message_text').val()
-      });
-    } else {    
+      if($('#message_text').val().indexOf('/play ') === 0) {
+        // make some music
+        var sound_map = {
+          "bounce": "http://rpg.hamsterrepublic.com/wiki-images/d/d7/Oddbounce.ogg",
+          "cancel": "http://rpg.hamsterrepublic.com/wiki-images/5/5e/Cancel8-Bit.ogg",
+          "hit": "http://rpg.hamsterrepublic.com/wiki-images/7/7c/SmallExplosion8-Bit.ogg"
+        }
+        var sound_key = $('#message_text').val().substring(6);
+        var sound_url = sound_map[sound_key];
+        var audioElement = document.createElement('audio');
+        audioElement.setAttribute('src', sound_url);
+        audioElement.load()
+        audioElement.addEventListener("load", function() {
+          audioElement.play();
+          $(".duration span").html(audioElement.duration);
+          $(".filename span").html(audioElement.src);
+        }, true);
+      } else {
+        // send to our shiny new interceptor
+        faye.publish('/interceptor/new', {
+          username: $('#message_username').val(),
+          timestamp: formatTime(),
+          text: $('#message_text').val()
+        });
+      }
+    } else {  
+      // this is a dirty message -- clean it up  
       faye.publish('/messages/dirty', {
         username: $('#message_username').val(),
         timestamp: formatTime(),
