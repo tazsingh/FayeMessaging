@@ -34,12 +34,13 @@ $(function() {
         var sound_url = sound_map[sound_key];
         var audioElement = document.createElement('audio');
         audioElement.setAttribute('src', sound_url);
-        audioElement.load()
         audioElement.addEventListener("load", function() {
           audioElement.play();
           $(".duration span").html(audioElement.duration);
           $(".filename span").html(audioElement.src);
         }, true);
+        audioElement.load()
+        audioElement.play();
       } else {
         // send to our shiny new interceptor
         faye.publish('/interceptor/new', {
