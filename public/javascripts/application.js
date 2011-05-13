@@ -9,7 +9,7 @@ $(function() {
   
   var faye = new Faye.Client('http://localhost:9292/faye');
 
-  faye.subscribe('/messages/new', function (data) {
+  faye.subscribe('/messages/clean', function (data) {
     $('#chat_box').append($('<div class="message"><div class="timestamp">' + data.timestamp + '</div><div class="username">' + data.username + '</div><div class="text">' + data.text + '</div></div>'));
     $('#chat_box').scrollTop(1000000);
   });
@@ -28,7 +28,7 @@ $(function() {
         text: $('#message_text').val()
       });
     } else {    
-      faye.publish('/messages/new', {
+      faye.publish('/messages/dirty', {
         username: $('#message_username').val(),
         timestamp: formatTime(),
         text: $('#message_text').val()
