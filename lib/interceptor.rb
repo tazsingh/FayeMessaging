@@ -56,7 +56,7 @@ private
     pp data
     begin
       doc = Nokogiri::XML.parse(data)
-      pp doc.xpath('//Title').first.content
+      doc.xpath('//Title').first.content
     rescue Exception => e
       ""
     end
