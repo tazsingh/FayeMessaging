@@ -2,10 +2,15 @@ require 'faye'
 require 'eventmachine'
 require 'em-http'
 require './lib/faye_messaging'
+require 'pp'
+require 'nokogiri'
 
 # Handles connection when client wants to submit book ISBN and have book title
 # published to their Faye feed
 class  InterceptorConnection < EM::Connection
+  API_KEY = "CDABR9CX" # max 500 per day
+  ISBNDB_URL = "http://isbndb.com/api/books.xml?access_key=#{API_KEY}&results=details&index1=isbn&value1=%s"
+  
   def post_init
     @client = Faye::Client.new(FayeMessaging::FAYE_SERVER)
   end
@@ -22,31 +27,39 @@ class  InterceptorConnection < EM::Connection
 private
 
   def get_isbn(data)
-    "9780735619678" # can you guess which book this is??
+    data.split(' ')[1]
   end
   
   # Asynchronously fetch book data given the ISBN
   def send_amazon_title(isbn)
-    url = "http://www.librarything.com/api/thingISBN/" + isbn
+    url = InterceptorConnection::ISBNDB_URL % isbn
     async_fetch_and_publish(url) { |data| librarything_response_parser(data) }
   end
   
   def async_fetch_and_publish(url, &block)
+    puts "requesting #{url}"
     http = EventMachine::HttpRequest.new(url).get(:timeout => FayeMessaging::HTTP_TIMEOUT_IN_SEC)
     http.errback do
-      err_message = "HTTP Error: Status #{http.response_header.status}"
-      send_data(err_message)
+      puts "HTTP Error: Status #{http.response_header.status}"
+      send_data("") # empty string signals error
     end
     http.callback do
-      title = block.call(http.response)
-      @client.publish(FayeMessaging::PUBLISH_CLEAN_URI, :text => title)
+      book_title = block.call(http.response)
+      @client.publish(FayeMessaging::PUBLISH_CLEAN_URI, :text => book_title)
       send_data("Book title published successfully!")
     end
   end
   
-  # Returns book title given XML response back from www.librarything.com REST API
+  # Returns book title given XML response back from isbndb.com
+  # Returns empty string if title not found
   def librarything_response_parser(data)
-    "The Rails 3 Way"
+    pp data
+    begin
+      doc = Nokogiri::XML.parse(data)
+      pp doc.xpath('//Title').first.content
+    rescue Exception => e
+      ""
+    end
   end
 end
 
