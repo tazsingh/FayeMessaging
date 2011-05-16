@@ -8,7 +8,7 @@ Feel free to browse the source and commit history to get a feel for how it works
 
 We all learnt a lot by developing this app and it was a very successful Hack Night!
 
-== May 12th Hack Night
+=== May 12th Hack Night
 
 We started to extend the app to look for ISBN numbers through Amazon's API.
 
