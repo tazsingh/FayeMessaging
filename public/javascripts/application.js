@@ -10,7 +10,7 @@ $(function() {
   // faye.subscribe('/messages/clean', function (data) {
   faye.subscribe('/messages/new', function (data) {
     // build the new message
-    var message = $('#message_template').html().clone();
+    var message = $('#message_template').clone();
     $('timestamp', message).text(data.timestamp);
     $('username', message).text(data.username);
     $('text', message).html(data.text);
