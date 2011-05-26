@@ -15,6 +15,8 @@ gem 'omniauth'
 gem 'nokogiri'
 gem 'em-synchrony'
 
+gem 'ankusa'
+
 # Use unicorn as the web server
 # gem 'unicorn'
 
