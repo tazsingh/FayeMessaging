@@ -9,7 +9,13 @@ $(function() {
 
   // faye.subscribe('/messages/clean', function (data) {
   faye.subscribe('/messages/new', function (data) {
-    $('#chat_box').append($('<div class="message"><div class="timestamp">' + data.timestamp + '</div><div class="username">' + data.username + '</div><div class="text">' + data.text + '</div></div>'));
+    // build the new message
+    var message = $('#message_template').html().clone();
+    $('timestamp', message).text(data.timestamp);
+    $('username', message).text(data.username);
+    $('text', message).html(data.text);
+    
+    $('#chat_box').append(message);
     $('#chat_box').scrollTop(1000000);
   });
   
@@ -95,6 +101,11 @@ $(function() {
       }
     }
   });
+  
+  // training for ankusa
+  
+
+
   
   
   // copied from some mysterious online js distillery
