@@ -165,6 +165,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  classifier
   em-synchrony
   faye
   haml
