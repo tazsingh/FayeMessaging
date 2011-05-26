@@ -12,6 +12,8 @@ gem 'haml'
 gem 'haml-rails'
 gem 'jquery-rails'
 gem 'omniauth'
+gem 'nokogiri'
+gem 'em-synchrony'
 
 # Use unicorn as the web server
 # gem 'unicorn'

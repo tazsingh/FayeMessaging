@@ -8,6 +8,18 @@ Feel free to browse the source and commit history to get a feel for how it works
 
 We all learnt a lot by developing this app and it was a very successful Hack Night!
 
+=== May 12th Hack Night
+
+We started to extend the app to look for ISBN numbers through Amazon's API.
+
+The purpose was to experiment with Event Machine for it's asynchronous non-blocking support, as suggested by Ian Ha.
+
+We also added Faye channels to prevent XSS attacks from chat messages and made the app look nicer.
+
+Once again, it was an excellent learning experience using advanced concepts which we can all take and use in our everyday apps!
+
+The app is currently a work in progress, therefore the Setup and Implementation sections will be updated once it is finalized. Feel free to look at source code until then.
+
 == Setup
 
 Execute this line from the app's root directory to run Faye:
@@ -30,5 +42,11 @@ Pressing the "Up" and "Down" arrow keys on the keyboard when the Message Text Bo
 * Aaron McLeod (@agmcleod)
 * Alex Chesser (@fstrnet)
 * Nick Hoffman (@nphoffman)
+
+=== May 12th Hack Night
+
+* Ian Ha (@ianpha)
+* Victor Stan (@victorbstan)
+* Morgan Tocker (@morgo)
 
 Feel free to extend this app and send me pull requests!
