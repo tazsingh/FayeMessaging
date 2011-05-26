@@ -18,3 +18,12 @@
       %br
     = f.text_field :text, :size => 60
     = f.submit "Send"
+    
+:plain
+  <div id="message_template" style="display:none">
+    <div class="message">
+      <div class="timestamp"></div>
+      <div class="username"></div>
+      <div class="text"></div>
+    </div>
+  </div>
