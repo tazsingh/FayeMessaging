@@ -15,6 +15,10 @@ gem 'omniauth'
 gem 'nokogiri'
 gem 'em-synchrony'
 
+gem 'twss'
+gem 'classifier'
+gem 'madeleine'
+
 # Use unicorn as the web server
 # gem 'unicorn'
 

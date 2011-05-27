@@ -1,6 +1,4 @@
-// Place your application-specific JavaScript functions and classes here
-// This file is automatically included by javascript_include_tag :defaults
-
+// the client code for Interceptor Group Chat
 
 $(function() {
   var chat_history = [];
@@ -9,8 +7,15 @@ $(function() {
   
   var faye = new Faye.Client('http://192.168.1.149:9292/faye');
 
-  faye.subscribe('/messages/clean', function (data) {
-    $('#chat_box').append($('<div class="message"><div class="timestamp">' + data.timestamp + '</div><div class="username">' + data.username + '</div><div class="text">' + data.text + '</div></div>'));
+  // faye.subscribe('/messages/clean', function (data) {
+  faye.subscribe('/messages/new', function (data) {
+    // build the new message
+    var message = $($('#message_template').html());
+    $('.timestamp', message).text(data.timestamp);
+    $('.username', message).text(data.username);
+    $('.text', message).html(data.text);
+    
+    $('#chat_box').append(message);
     $('#chat_box').scrollTop(1000000);
   });
   
@@ -51,7 +56,9 @@ $(function() {
       }
     } else {  
       // this is a dirty message -- clean it up  
-      faye.publish('/messages/dirty', {
+      // faye.publish('/messages/dirty', {
+      // faye.publish('/messages/new', {
+      faye.publish('/classifier/new', {
         username: $('#message_username').val(),
         timestamp: formatTime(),
         text: $('#message_text').val()
@@ -96,15 +103,18 @@ $(function() {
     }
   });
   
+  // training for ankusa
+  
+
+
   
   
+  // copied from some mysterious online js distillery
   var formatTime = function() { 
     var dt = new Date(); 
     var hours = dt.getHours(); 
     var minutes = dt.getMinutes(); 
     var seconds = dt.getSeconds(); 
-    // the above dt.get...() functions return a single digit 
-    // so I prepend the zero here when needed 
     if (hours < 10) hours = '0' + hours; 
     if (minutes < 10) minutes = '0' + minutes; 
     if (seconds < 10) seconds = '0' + seconds; 
