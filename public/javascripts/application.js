@@ -57,7 +57,8 @@ $(function() {
     } else {  
       // this is a dirty message -- clean it up  
       // faye.publish('/messages/dirty', {
-      faye.publish('/messages/new', {
+      // faye.publish('/messages/new', {
+      faye.publish('/classifier/new', {
         username: $('#message_username').val(),
         timestamp: formatTime(),
         text: $('#message_text').val()
