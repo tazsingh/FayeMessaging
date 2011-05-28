@@ -2,8 +2,12 @@ require 'eventmachine'
 require 'faye'
 require 'classifier'
 require 'madeleine'
+require 'yaml'
 
-client = Faye::Client.new('http://192.168.1.149:9292/faye')
+config = YAML.load_file("../config/faye.yml")
+puts config
+
+client = Faye::Client.new("#{config['server_ip']}/faye")
 maddie = SnapshotMadeleine.new("bayes_data") {
   Classifier::Bayes.new "Love", "Joy", "Sadness", "Fear", "Anger", "Surprise"
 }

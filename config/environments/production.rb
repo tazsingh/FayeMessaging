@@ -48,6 +48,6 @@ FayeMessaging::Application.configure do
   config.active_support.deprecation = :notify
 
   # Faye messaging IP
-  # ex: http://192.168.1.149:9292/faye
-  config.faye_url = 'http://70.30.90.186:9292'
+  faye_config = YAML.load_file(Rails.root.join('config', "faye.yml"))
+  config.faye_url = faye_config['server_ip']
 end

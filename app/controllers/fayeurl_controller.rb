@@ -1,6 +1,8 @@
 class FayeurlController < ApplicationController
+  respond_to :json
+
   def index
-    Rails.configuration.faye_url.to_json
+    respond_with Rails.configuration.faye_url.to_json
   end
 
 end

@@ -21,7 +21,7 @@ $(function() {
     console.log(faye_url+"/faye");
 
     faye = new Faye.Client(faye_url+"/faye");
-    console.log(faye);
+    // console.log(faye);
 
     // faye.subscribe('/messages/clean', function (data) {
     faye.subscribe('/messages/new', function (data) {
