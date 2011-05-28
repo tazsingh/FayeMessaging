@@ -70,6 +70,18 @@ div.message .timestamp {
   float: right;
 }
 
+div.message .classification {
+  float: right;
+  color: #000;
+  margin-right: 5px;
+}
+
+div.message .wrong_classification {
+  float: right;
+  color: #000;
+  margin-right: 20px;
+}
+
 div.message .username {
   color: #999;
 }
