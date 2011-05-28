@@ -22,5 +22,9 @@ FayeMessaging::Application.configure do
 
   # Only use best-standards-support built into browsers
   config.action_dispatch.best_standards_support = :builtin
+
+  # Faye messaging IP
+  # ex: http://192.168.1.149:9292/faye
+  config.faye_url = 'http://70.30.90.186:9292'
 end
 

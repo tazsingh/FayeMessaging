@@ -46,4 +46,8 @@ FayeMessaging::Application.configure do
 
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
+
+  # Faye messaging IP
+  # ex: http://192.168.1.149:9292/faye
+  config.faye_url = 'http://70.30.90.186:9292'
 end

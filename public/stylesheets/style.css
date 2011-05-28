@@ -3,7 +3,8 @@ html, body { margin: 0; padding: 0; }
 html { height: 100%; }
 
 body {
-  background-color: #ddd; color: #222;
+  background-color: #ddd;
+  color: #222;
   
   background: #cedce7; /* Old browsers */
   background: -moz-linear-gradient(top, #cedce7 0%, #596a72 100%); /* FF3.6+ */

@@ -32,4 +32,8 @@ FayeMessaging::Application.configure do
 
   # Print deprecation notices to the stderr
   config.active_support.deprecation = :stderr
+
+  # Faye messaging IP
+  # ex: http://192.168.1.149:9292/faye
+  config.faye_url = 'http://0.0.0.0:9292'
 end
