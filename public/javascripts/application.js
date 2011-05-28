@@ -12,6 +12,32 @@ $(function() {
     // build the new message
     var message = $($('#message_template').html());
     $('.timestamp', message).text(data.timestamp);
+    $('.wrong_classification a', message).click(function(e) {
+      e.preventDefault();
+
+      var that = $(this), options = "<select>", drop_down;
+
+      $.each(["", "Love", "Joy", "Sadness", "Fear", "Anger", "Surprise"], function(i,sentiment) {
+        options = options + '<option value="' + sentiment + '">' + sentiment + '</option>'
+      });
+
+      drop_down = $(options + '</select>');
+
+      drop_down.select(function() {
+        var dropd = $(this);
+
+        faye.publish('/classifier/wrong', {
+          text: "love!",
+          username: dropd.val()
+        });
+
+        dropd.remove();
+      });
+
+      drop_down.insertAfter(that);
+      that.remove();
+    });
+    $('.classification', message).text(data.classification);
     $('.username', message).text(data.username);
     $('.text', message).html(data.text);
     
