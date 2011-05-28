@@ -4,3 +4,5 @@ log/*.log
 tmp/
 .idea
 .idea/*
+bayes_data/*
+bayes_data
