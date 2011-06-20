@@ -1,3 +1,4 @@
+
 // the client code for Interceptor Group Chat
 
 $(function() {
@@ -7,21 +8,23 @@ $(function() {
   var faye;
 
   // get faye url
-  $.getJSON('/faye_url.json', function(data) {
-    if (data.length) {
-      chat(data);
-      console.log(data);
-    } else {
-      alert('Cannot get Faye IP');
-    }
+//  $.getJSON('/faye_url.json', function(data) {
+//    if (data.length) {
+//      chat(data);
+//      console.log(data);
+//    } else {
+//      alert('Cannot get Faye IP');
+//    }
+//
+//  });
 
-  });
+//  function chat(faye_url) {
+//
+    console.log("<%= Rails.configuration.faye_url %>/faye");
 
-  function chat(faye_url) {
-    
-    console.log(faye_url+"/faye");
+    var version = '1'
 
-    faye = new Faye.Client(faye_url+"/faye");
+    faye = new Faye.Client("<%= Rails.configuration.faye_url %>/faye");
     // console.log(faye);
 
       // faye.subscribe('/messages/clean', function (data) {
@@ -164,6 +167,6 @@ $(function() {
       return hours + ":" + minutes + ":" + seconds;
     }
 
-  } // end function chat
+//  } // end function chat
   
 }); 

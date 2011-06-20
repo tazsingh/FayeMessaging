@@ -1,10 +1,15 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.7'
-gem 'rake', '~> 0.8.7'
+gem 'rails', '3.1.0.rc4'
+#gem 'rake', '~> 0.8.7'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
+
+# Asset template engines
+gem 'sass-rails', "~> 3.1.0.rc"
+#gem 'coffee-script'
+gem 'uglifier'
 
 gem 'sqlite3'
 
@@ -12,7 +17,7 @@ gem 'faye'
 gem 'haml'
 gem 'haml-rails'
 gem 'jquery-rails'
-gem 'omniauth'
+gem 'omniauth', '>0.1'
 gem 'nokogiri'
 gem 'em-synchrony'
 
@@ -29,6 +34,11 @@ gem 'madeleine'
 # To use debugger (ruby-debug for Ruby 1.8.7+, ruby-debug19 for Ruby 1.9.2+)
 # gem 'ruby-debug'
 # gem 'ruby-debug19', :require => 'ruby-debug'
+
+group :test do
+  # Pretty printed test output
+  gem 'turn', :require => false
+end
 
 # Bundle the extra gems:
 # gem 'bj'

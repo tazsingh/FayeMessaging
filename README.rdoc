@@ -26,11 +26,14 @@ Execute this line from the app's root directory to run Faye:
 
   rackup faye.ru -s thin -E production
 
-In order to run on anything but +localhost+, change the IP on <tt>line 10</tt> at <tt>public/javascripts/application.js</tt> and <tt>line 6</tt> at <tt>app/views/layouts/application.html.erb</tt>.
+In order to run on anything but +localhost+, change the IP in the file <tt>/config/faye.yml</tt>, and don't forget to also run one of the files in the <tt>/lib</tt> folder; like so: 
+
+  ruby bayes_classifier.rb
 
 == Notes on Implementation
 
 Click on the "Sign in with Twitter" link to set your Username to your Twitter Username.
+
 You can also enter your Username in the Text Field if you haven't signed in with Twitter.
 
 Pressing the "Up" and "Down" arrow keys on the keyboard when the Message Text Box is in focus will traverse through your history of sent messages (like your Terminal).
